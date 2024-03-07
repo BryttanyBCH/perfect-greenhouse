@@ -4,19 +4,26 @@ import "./styles.css"
 import {useState} from "react";
 
 function App() {
-   const testItems = ["wheat", "corn", "rice", "taro"];
+   const testItems = [
+      { title: "wheat", image: "logo512.png" },
+      { title: "corn", image: "logo512.png" },
+      { title: "rice", image: "logo512.png" },
+      { title: "taro", image: "logo512.png" }
+   ];
 
    const [itemsAvailable, setItemsAvailable] = useState(testItems);
    const [itemsSelected, setItemsSelected] = useState([])
 
-   const handleItemAvailableDblClick = (item) => {
-      setItemsAvailable(itemsAvailable.filter(available => available !== item));
-      setItemsSelected([...itemsSelected, item]);
+   const findItem = (title) => testItems.find(item => item.title === title);
+
+   const handleItemAvailableDblClick = (title) => {
+      setItemsAvailable(itemsAvailable.filter(item => item.title !== title));
+      setItemsSelected([...itemsSelected, findItem(title)]);
    };
 
-   const handleItemSelectedDblClick = (item) => {
-      setItemsSelected(itemsSelected.filter(selected => selected !== item));
-      setItemsAvailable([...itemsAvailable, item]);
+   const handleItemSelectedDblClick = (title) => {
+      setItemsSelected(itemsSelected.filter(item => item.title !== title));
+      setItemsAvailable([...itemsAvailable, findItem(title)]);
    };
 
    return (
