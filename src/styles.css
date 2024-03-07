@@ -38,12 +38,24 @@ body {
     height: 50px;
 }
 
-.crop-calculator .items-available {
+.crop-calculator .left-column {
     width: 25%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.crop-calculator .left-column .items-available {
+    width: 100%;
+    height: 50%;
     background: #AAAAAA;
-    border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
+}
+
+.crop-calculator .left-column .items-selected {
+    width: 100%;
+    height: 50%;
+    background: #BBBBBB;
+    border-bottom-left-radius: 8px;
 }
 
 .crop-calculator .right-column {
@@ -52,17 +64,11 @@ body {
     flex-direction: column;
 }
 
-.crop-calculator .right-column .items-selected {
-    width: 100%;
-    height: 20%;
-    background: #BBBBBB;
-    border-bottom-right-radius: 8px;
-}
-
 .crop-calculator .right-column .calculation-result {
     width: 100%;
-    height: 20%;
+    height: 40%;
     background: #CCCCCC;
+    border-bottom-right-radius: 8px;
 }
 
 .crop-calculator .right-column .diagram-result {

@@ -28,19 +28,21 @@ function App() {
 
    return (
       <div className="crop-calculator">
-         <ItemSelection
-            className="items-available"
-            items={itemsAvailable}
-            onItemDblClick={handleItemAvailableDblClick}
-         />
-         <div className="right-column">
-            <div className="diagram-result"></div>
-            <div className="calculation-result"></div>
+         <div className="left-column">
+            <ItemSelection
+               className="items-available"
+               items={itemsAvailable}
+               onItemDblClick={handleItemAvailableDblClick}
+            />
             <ItemSelection
                className="items-selected"
                items={itemsSelected}
                onItemDblClick={handleItemSelectedDblClick}
             />
+         </div>
+         <div className="right-column">
+            <div className="diagram-result"></div>
+            <div className="calculation-result"></div>
          </div>
       </div>
    )
