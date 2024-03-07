@@ -22,7 +22,7 @@ function App() {
    return (
       <div className="crop-calculator">
          <ItemSelection
-            className="crops-available"
+            className="items-available"
             items={itemsAvailable}
             onItemDblClick={handleItemAvailableDblClick}
          />
@@ -30,7 +30,7 @@ function App() {
             <div className="diagram-result"></div>
             <div className="calculation-result"></div>
             <ItemSelection
-               className="crops-selected"
+               className="items-selected"
                items={itemsSelected}
                onItemDblClick={handleItemSelectedDblClick}
             />
