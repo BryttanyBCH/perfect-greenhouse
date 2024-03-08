@@ -1,29 +1,26 @@
+import { useState } from "react";
+
+import { crops } from './crops';
 import ItemSelection from './ItemSelection';
 
 import "./styles.css"
-import {useState} from "react";
 
 function App() {
-   const testItems = [
-      { title: "wheat", image: "logo512.png" },
-      { title: "corn", image: "logo512.png" },
-      { title: "rice", image: "logo512.png" },
-      { title: "taro", image: "logo512.png" }
-   ];
+   const cropsArray = Object.values(crops);
 
-   const [itemsAvailable, setItemsAvailable] = useState(testItems);
+   const [itemsAvailable, setItemsAvailable] = useState(cropsArray);
    const [itemsSelected, setItemsSelected] = useState([])
 
-   const findItem = (title) => testItems.find(item => item.title === title);
+   const findItem = (name) => cropsArray.find(item => item.name === name);
 
-   const handleItemAvailableDblClick = (title) => {
-      setItemsAvailable(itemsAvailable.filter(item => item.title !== title));
-      setItemsSelected([...itemsSelected, findItem(title)]);
+   const handleItemAvailableDblClick = (name) => {
+      setItemsAvailable(itemsAvailable.filter(item => item.name !== name));
+      setItemsSelected([...itemsSelected, findItem(name)]);
    };
 
-   const handleItemSelectedDblClick = (title) => {
-      setItemsSelected(itemsSelected.filter(item => item.title !== title));
-      setItemsAvailable([...itemsAvailable, findItem(title)]);
+   const handleItemSelectedDblClick = (name) => {
+      setItemsSelected(itemsSelected.filter(item => item.name !== name));
+      setItemsAvailable([...itemsAvailable, findItem(name)]);
    };
 
    return (

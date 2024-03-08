@@ -5,9 +5,9 @@ function ItemSelection({ items, className, onItemDblClick }) {
       <div className={className}>
          <ul>
             {items.map((item, index) => (
-               <li key={index} onDoubleClick={() => onItemDblClick ? onItemDblClick(item.title) : undefined}>
-                  <img src={item.image} alt={item.title} />
-                  <span>{item.title}</span>
+               <li key={index} onDoubleClick={() => onItemDblClick ? onItemDblClick(item.name) : undefined}>
+                  <img src={"logo512.png"} alt={item.name} />
+                  <span>{item.name}</span>
                </li>
             ))}
          </ul>
