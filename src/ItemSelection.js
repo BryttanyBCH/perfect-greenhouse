@@ -4,9 +4,9 @@ function ItemSelection({ items, className, onItemDblClick }) {
    return (
       <div className={className}>
          <ul>
-            {items.map((item, index) => (
+            {items.sort((a, b) => a.name.localeCompare(b.name)).map((item, index) => (
                <li key={index} onDoubleClick={() => onItemDblClick ? onItemDblClick(item.name) : undefined}>
-                  <img src={"logo512.png"} alt={item.name} />
+                  <img src={require(`./img/${item.name.replace(/\s+/g, '')}.png`)} alt={item.name} />
                   <span>{item.name}</span>
                </li>
             ))}
