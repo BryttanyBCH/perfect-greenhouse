@@ -6,7 +6,9 @@ import ItemSelection from './ItemSelection';
 import "./styles.css"
 
 function App() {
-   const cropsArray = Object.values(crops);
+   const cropsArray = Object.values(crops).map(item => {
+      return {...item, count: 1}
+   });
 
    const [itemsAvailable, setItemsAvailable] = useState(cropsArray);
    const [itemsSelected, setItemsSelected] = useState([])
@@ -23,6 +25,14 @@ function App() {
       setItemsAvailable([...itemsAvailable, findItem(name)]);
    };
 
+   const handleCountChanged = (itemName, newCount) => {
+      setItemsSelected(
+         itemsSelected.map(item =>
+            item.name === itemName ? {...item, count: newCount } : item
+         )
+      );
+   };
+
    return (
       <div className="crop-calculator">
          <div className="left-column">
@@ -35,6 +45,7 @@ function App() {
                className="items-selected"
                items={itemsSelected}
                onItemDblClick={handleItemSelectedDblClick}
+               onCountChanged={handleCountChanged}
             />
          </div>
          <div className="right-column">

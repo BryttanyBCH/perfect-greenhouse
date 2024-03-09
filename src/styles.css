@@ -23,7 +23,7 @@ body {
 }
 
 .crop-calculator ul li {
-    padding-left: 20px;
+    padding-left: 10px;
     padding-bottom: 2px;
     display: flex;
     align-items: center;
@@ -37,6 +37,21 @@ body {
 .crop-calculator ul li img {
     margin-right: 10px;
     height: 48px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+}
+
+.item-count {
+    width: 50px;
+    margin-right: 5px;
 }
 
 .crop-calculator .left-column {
