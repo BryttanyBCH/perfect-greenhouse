@@ -1,17 +1,19 @@
 import { useState } from "react";
 
-import { crops } from './crops';
 import ItemSelection from './ItemSelection';
+import Calculation from './Calculation';
+
+import { crops } from './crops';
 
 import "./styles.css"
 
 function App() {
    const cropsArray = Object.values(crops).map(item => {
-      return {...item, count: 1}
+      return {...item, count: 1};
    });
 
    const [itemsAvailable, setItemsAvailable] = useState(cropsArray);
-   const [itemsSelected, setItemsSelected] = useState([])
+   const [itemsSelected, setItemsSelected] = useState([]);
 
    const findItem = (name) => cropsArray.find(item => item.name === name);
 
@@ -50,7 +52,9 @@ function App() {
          </div>
          <div className="right-column">
             <div className="diagram-result"></div>
-            <div className="calculation-result"></div>
+            <Calculation
+               items={itemsSelected}
+            />
          </div>
       </div>
    )
