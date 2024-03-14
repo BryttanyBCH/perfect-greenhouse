@@ -1,7 +1,7 @@
-import { useState } from "react";
+import {useMemo, useState} from "react";
 
 import ItemSelection from './ItemSelection';
-import Calculation from './Calculation';
+import getSolutions from './GetSolutions';
 
 import { crops } from './crops';
 
@@ -35,6 +35,13 @@ function App() {
       );
    };
 
+   const itemsWithSolutions = useMemo(() => {
+      if (itemsSelected.length > 0) {
+         return getSolutions({items: itemsSelected});
+      }
+      return [];
+   }, [itemsSelected]);
+
    return (
       <div className="crop-calculator">
          <div className="left-column">
@@ -52,9 +59,11 @@ function App() {
          </div>
          <div className="right-column">
             <div className="diagram-result"></div>
-            <Calculation
-               items={itemsSelected}
-            />
+            <div className="calculation-result">
+               {itemsWithSolutions.map((item) => (
+                  <p key={item.id}>{`${item.name}: ${item.solution}`}</p>
+               ))}
+            </div>
          </div>
       </div>
    )
