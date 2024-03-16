@@ -5,7 +5,7 @@ import "./styles.css";
 function ItemSelection({ items, className, onItemDblClick, onCountChanged }) {
 
    const handleCountChange = (itemName, newCount) => {
-      onCountChanged(itemName, Math.max(Number(newCount), 0));
+      onCountChanged(itemName, Math.max(Number(newCount), 1));
    };
 
    const sortedItems = useMemo(() => items.sort((a,b) => a.name.localeCompare(b.name)), [items]);

@@ -2,6 +2,7 @@ import {useMemo, useState} from "react";
 
 import ItemSelection from './ItemSelection';
 import getSolutions from './GetSolutions';
+import Diagram from "./Diagram";
 
 import { crops } from './crops';
 
@@ -58,7 +59,9 @@ function App() {
             />
          </div>
          <div className="right-column">
-            <div className="diagram-result"></div>
+            <Diagram
+               items={itemsWithSolutions}
+            />
             <div className="calculation-result">
                {itemsWithSolutions.map((item) => (
                   <p key={item.id}>{`${item.name}: ${item.solution}`}</p>
