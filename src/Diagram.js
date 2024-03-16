@@ -1,5 +1,5 @@
 
-import React from 'react';
+import { useState, useEffect } from 'react';
 import GridLayout from 'react-grid-layout';
 
 import "./styles.css"
@@ -35,16 +35,38 @@ function Diagram({items}) {
       }
    }
 
+   const [rowHeight, setRowHeight] = useState(48);
+   const [gridWidth, setGridWidth] = useState(12 * 48);
+
+   useEffect(() => {
+      function handleResize() {
+         // Here we set rowHeight and gridWidth based on the size of the parent element
+         // For instance, rowHeight will be 1/10th of .diagram-result div's height.
+         let diagramResult = document.querySelector('.diagram-result');
+         setRowHeight(diagramResult.offsetHeight / rowCount);
+         setGridWidth(diagramResult.offsetWidth);
+      }
+
+      window.addEventListener('resize', handleResize);
+
+      handleResize();
+
+      return () => {
+         window.removeEventListener('resize', handleResize);
+      };
+   }, []);
+
    return (
       <div className="diagram-result">
          <GridLayout
             className="layout"
             layout={layout}
-            cols={12}
-            rowHeight={48}
-            width={12 * 48}
+            cols={colCount}
+            rowHeight={rowHeight}
+            width={gridWidth}
             isDraggable={false}
             isResizable={false}
+            margin={[0, 0]}
          >
             {layout.map((layoutItem) => {
                const itemId = layoutItem.i.split('_')[0]; // extract the item id from layoutItem i
