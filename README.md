@@ -10,7 +10,7 @@ Using Perfect Greenhouse, we find that the optimal percentages are:
 - ~57% of the field for Pumpkins
 - ~43% of the field for Yams
 
-Perfect Greenhouse is able to arrive at this conclusion be solving a series of automatically generated linear equations. It can also handle arbitrary amount of input crops with any in any desired ratio.
+Perfect Greenhouse is able to arrive at this conclusion by solving a series of automatically generated linear equations. It can also handle arbitrary amount of input crops with any in any desired ratio.
 
 
 ## To-Do:
